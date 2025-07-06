@@ -8,17 +8,49 @@
 </head>
 <body>
     <div class="container">
-        <h1>Enhanced Counter App</h1>
+        <h1>🎮 Ultimate Counter App</h1>
         
-        <!-- Step Size Control -->
-        <div class="step-control">
-            <label for="stepSize">Step Size:</label>
-            <input type="number" id="stepSize" value="1" min="1" max="100">
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <div class="setting-group">
+                <label for="stepSize">Step Size:</label>
+                <input type="number" id="stepSize" value="1" min="1" max="1000">
+            </div>
+            <div class="setting-group">
+                <label for="themeSelect">Theme:</label>
+                <select id="themeSelect">
+                    <option value="default">Default</option>
+                    <option value="dark">Dark Mode</option>
+                    <option value="neon">Neon</option>
+                    <option value="retro">Retro</option>
+                    <option value="nature">Nature</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label for="soundToggle">
+                    <input type="checkbox" id="soundToggle" checked> Sound Effects
+                </label>
+            </div>
+            <div class="setting-group">
+                <label for="animationToggle">
+                    <input type="checkbox" id="animationToggle" checked> Animations
+                </label>
+            </div>
         </div>
         
         <!-- Counter Display -->
         <div class="counter-display">
-            <span id="counter">0</span>
+            <div class="counter-wrapper">
+                <span id="counter">0</span>
+                <div class="counter-effects">
+                    <div class="sparkle" id="sparkle1">✨</div>
+                    <div class="sparkle" id="sparkle2">⭐</div>
+                    <div class="sparkle" id="sparkle3">💫</div>
+                </div>
+            </div>
+            <div class="counter-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
         </div>
         
         <!-- Main Buttons -->
@@ -36,6 +68,28 @@
             <button id="subtract100" class="btn btn-orange">-100</button>
         </div>
         
+        <!-- Goal System -->
+        <div class="goal-system">
+            <h3>🎯 Goals & Achievements</h3>
+            <div class="goal-input">
+                <input type="number" id="goalInput" placeholder="Set a goal...">
+                <button id="setGoal" class="btn btn-purple">Set Goal</button>
+            </div>
+            <div id="currentGoal" class="current-goal"></div>
+            <div id="achievements" class="achievements"></div>
+        </div>
+        
+        <!-- Game Mode -->
+        <div class="game-mode">
+            <h3>🎲 Mini Games</h3>
+            <div class="game-buttons">
+                <button id="randomChallenge" class="btn btn-rainbow">Random Challenge</button>
+                <button id="speedTest" class="btn btn-cyan">Speed Test (30s)</button>
+                <button id="precisionTest" class="btn btn-magenta">Precision Test</button>
+            </div>
+            <div id="gameStatus" class="game-status"></div>
+        </div>
+        
         <!-- Statistics -->
         <div class="stats">
             <div class="stat-item">
@@ -50,6 +104,29 @@
                 <span class="stat-label">Lowest Value:</span>
                 <span id="lowestValue">0</span>
             </div>
+            <div class="stat-item">
+                <span class="stat-label">Session Time:</span>
+                <span id="sessionTime">00:00</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Clicks/Min:</span>
+                <span id="clicksPerMinute">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Achievements:</span>
+                <span id="achievementCount">0</span>
+            </div>
+        </div>
+        
+        <!-- Data Controls -->
+        <div class="data-controls">
+            <h3>💾 Data Management</h3>
+            <div class="data-buttons">
+                <button id="saveData" class="btn btn-green">Save Progress</button>
+                <button id="loadData" class="btn btn-blue">Load Progress</button>
+                <button id="exportData" class="btn btn-purple">Export Data</button>
+                <button id="resetAll" class="btn btn-red">Reset Everything</button>
+            </div>
         </div>
         
         <!-- History -->
@@ -60,8 +137,17 @@
         </div>
         
         <div class="info">
-            <p>Use buttons, keyboard (↑↓ +- Space/R), or set custom step sizes!</p>
+            <p>🎮 Ultimate counter with themes, games, goals, and data persistence!</p>
+            <p>⌨️ Keyboard: ↑↓ +- Space/R | 🎯 Set goals | 🎲 Play mini-games</p>
         </div>
+        
+        <!-- Hidden audio elements for sound effects -->
+        <audio id="clickSound" preload="auto">
+            <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhCjyN1/LNeCsFJHfH8N2QQAoUXrTp66hVFApGn+DyvmsgCSCO2O/JdSYELH7N7tyMOQkWY7zp5J1NEAxKneHztmUeDTaP2PLDN" type="audio/wav">
+        </audio>
+        <audio id="achievementSound" preload="auto">
+            <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhCjyN1/LNeCsFJHfH8N2QQAoUXrTp66hVFApGn+DyvmsgBSGO2O/IdSYELH7N7tyMOQkWY7zp5J1NEAxKneHzt" type="audio/wav">
+        </audio>
     </div>
     <script src="script.js"></script>
 </body>
